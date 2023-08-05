@@ -1,19 +1,18 @@
-let numbers = [2, 9, 16, 23, 72, 87, 94];
-
 function binarySearch(arr, num) {
   min = 0;
   max = arr.length - 1;
-  while (arr[max] >= num) {
-    middle = (max + min) / 2;
-    if (num > arr[middle]) {
-      min = middle + 1;
-    } else if (num < arr[middle]) {
-      max = middle - 1;
-    } else {
-      return middle;
+  step = 0;
+
+  while (min <= max) {
+    let mid = Math.floor((max + min) / 2);
+    if (num > arr[mid]) {
+      min = mid + 1;
+      console.log("Now min's index: " + min + ", value: " + arr[min]);
+    } else if (num < arr[mid]) {
+      max = mid - 1;
+    } else if (num === arr[mid]) {
+      return mid;
     }
   }
   return -1;
 }
-
-console.log(binarySearch(numbers, 72));
